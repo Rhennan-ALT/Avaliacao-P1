@@ -8,5 +8,5 @@ class Aluno(BaseModel):
     nome: str
     idade: int
     curso: str
-    notas: list
+    notas: list[float]
     endereco: Endereco

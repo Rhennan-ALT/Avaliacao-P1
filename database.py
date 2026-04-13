@@ -1,8 +1,8 @@
 from pymongo import MongoClient
 
-MONGO_URL = "mongo://localhost:27018"
+MONGO_URL = "mongodb://localhost:27017"
 
 client = MongoClient(MONGO_URL)
 
-db = client["escola"]
-alunos_colletion = db["alunos"] 
+db = client["faculdade"]
+alunos_collection = db["alunos"] 

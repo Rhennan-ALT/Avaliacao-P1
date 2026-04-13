@@ -1,0 +1,43 @@
+Buscar Alunos:
+-db.alunos.find().pretty()
+
+Buscar Alunos por Curso Especifico:
+-db.alunos.find({ curso: "ADS" })
+
+Buscar Alunos por Idade Especifica:
+-db.alunos.find({ idade: { $gt: 21 } })
+
+Atualizar a Idade de um Aluno:
+-db.alunos.updateOne(
+  { nome: "Matt Helders" },
+  { $set: { idade: 21 } }
+)
+
+Adicionar uma Nova Nota:
+-db.alunos.updateOne(
+  { nome: "Nick O'Malley" },
+  { $push: { notas: 10 } }
+)
+
+Remover um Aluno:
+-db.alunos.deleteOne({ nome: "Nick O'Malley" })
+
+Média das Notas:
+-db.alunos.aggregate([
+  {
+    $project: {
+      nome: 1,
+      media: { $avg: "$notas" }
+    }
+  }
+])
+
+Quantidade de Alunos por Curso:
+-db.alunos.aggregate([
+  {
+    $group: {
+      _id: "$curso",
+      totalAlunos: { $sum: 1 }
+    }
+  }
+])
